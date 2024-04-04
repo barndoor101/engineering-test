@@ -7,6 +7,7 @@ import { Users, Parcs, Bookings } from '../models/models';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ServiceService {
   url: string = environment.apiBaseUrl + '/';
 
