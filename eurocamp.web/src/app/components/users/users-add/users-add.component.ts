@@ -13,8 +13,4 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 export class UsersAddComponent {
     constructor(public appService: AppService) {}
 
-    onSubmit(form: NgForm) {
-      this.appService.addUser(form);
-    }
-
 }
