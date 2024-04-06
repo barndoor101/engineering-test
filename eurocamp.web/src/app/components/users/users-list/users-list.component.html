@@ -1,0 +1,23 @@
+<div class="table-responsive">
+    <table class="table table-striped text-center">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of appService.userList">
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td class="text-center">
+            <div class="btn-group" role="group">
+              <button class="btn btn-danger btn-sm me-2">Delete</button>
+              <button class="btn btn-warning btn-sm">Edit</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>

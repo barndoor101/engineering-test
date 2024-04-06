@@ -6,6 +6,8 @@ I'd be curious as to the use of GUIDs instead of an INT id, I've seen uses where
 
 Split name into firstname and lastname. Include title field.
 
+Include Guid in the Parcs table. or even further, have a stored proc to include the user name and parc name in the booking call.
+
 
 Part 2
 
