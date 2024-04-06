@@ -13,13 +13,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 export class UsersAddEditComponent {
     constructor(public appService: AppService) {}
 
-    onSubmit(form: NgForm) {
-      this.appService.userFormSubmitted = true;
-      if (this.appService.userFormData.id == 0) {
-        this.insertRecord(form);
-      } else {
-        this.updateRecord(form);
-      }
+    onSubmit(form: NgForm) {      
+    }
+
+    clearForm(form: NgForm) {
       
     }
 }
