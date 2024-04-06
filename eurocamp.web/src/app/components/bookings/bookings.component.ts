@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { BookingsListComponent } from './bookings-list/bookings-list.component';
-import { BookingsAddEditComponent } from './bookings-add-edit/bookings-add-edit.component';
+import { BookingsAddComponent } from './bookings-add/bookings-add.component';
 
 @Component({
   selector: 'app-bookings',
   standalone: true,
-  imports: [BookingsListComponent, BookingsAddEditComponent],
+  imports: [BookingsListComponent, BookingsAddComponent],
   templateUrl: './bookings.component.html',
   styleUrl: './bookings.component.css'
 })

@@ -4,19 +4,17 @@ import { NgForm } from '@angular/forms';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-users-add-edit',
+  selector: 'app-users-add',
   standalone: true,
   imports: [ReactiveFormsModule, FormsModule],
-  templateUrl: './users-add-edit.component.html',
-  styleUrl: './users-add-edit.component.css'
+  templateUrl: './users-add.component.html',
+  styleUrl: './users-add.component.css'
 })
-export class UsersAddEditComponent {
+export class UsersAddComponent {
     constructor(public appService: AppService) {}
 
-    onSubmit(form: NgForm) {      
+    onSubmit(form: NgForm) {
+      this.appService.addUser(form);
     }
 
-    clearForm(form: NgForm) {
-      
-    }
 }

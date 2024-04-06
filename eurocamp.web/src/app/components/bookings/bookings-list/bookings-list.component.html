@@ -6,19 +6,20 @@
           <th>Parc</th>
           <th>Date</th>
           <th>Comments</th>
-          <th>Action</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let booking of appService.bookingList">
           <td>{{ appService.lookupUser(booking.user) }}</td>
-          <td>{{ booking.parc }}</td>
+          <td>{{ appService.lookupParc(booking.parc) }}</td>
           <td>{{ appService.convertDate(booking.bookingdate) }}</td>
           <td>{{ booking.comments }}</td>
           <td class="text-center">
             <div class="btn-group" role="group">
-              <button class="btn btn-danger btn-sm me-2">Delete</button>
-              <button class="btn btn-warning btn-sm">Edit</button>
+              <button class="btn btn-danger btn-sm me-2" (click)="appService.deleteBooking(booking.id)">
+                <img src="/assets/delete.svg" />
+              </button>
             </div>
           </td>
         </tr>

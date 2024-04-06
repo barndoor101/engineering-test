@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { Users, Parcs, Bookings } from '../models/models';
 import moment from 'moment';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +17,10 @@ export class AppService {
   bookingList: Bookings[] = [];
 
   userFormData: Users = new Users();
-  userFormSubmitted: boolean = false;
+  parcFormData: Parcs = new Parcs();
+  bookingFormData: Bookings = new Bookings();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private toastr: ToastrService) {}
 
   refreshUserList() {
     return this.http.get(this.url + '/users').subscribe({
@@ -31,12 +33,30 @@ export class AppService {
     })
   }
 
-  addUser(  ) {
-    return this.http.post(this.url + '/users/', '');
+  addUser( form: NgForm ) {
+    return this.http.post(this.url + '/users/', form.form.value)
+      .subscribe({
+        next: data => {
+          this.toastr.success('User Added');
+          this.refreshUserList();
+        },
+        error: error => {
+          this.toastr.success('Error');
+        }
+      });
   }
 
   deleteUser( id: string ) {
-    return this.http.delete(this.url + '/users/' + id);
+    return this.http.delete(this.url + '/users/' + id)
+      .subscribe({
+        next: data => {
+          this.toastr.success('User Deleted');
+          this.refreshUserList();
+        },
+        error: error => {
+          this.toastr.success('Error');
+        }
+      });
   }
 
   refreshParcList() {
@@ -50,12 +70,21 @@ export class AppService {
     })
   }
 
-  addParc(  ) {
-    return this.http.post(this.url + '/parcs/', '');
+  addParc() {
+    return this.http.post(this.url + '/parcs/', this.parcFormData);
   }
 
   deleteParc( id: string ) {
-    return this.http.delete(this.url + '/parcs/' + id);
+    return this.http.delete(this.url + '/parcs/' + id)
+      .subscribe({
+        next: data => {
+          this.toastr.success('Parc Deleted');
+          this.refreshParcList();
+        },
+        error: error => {
+            this.toastr.success('Error');
+        }
+      });
   }
 
   refreshBookingList() {
@@ -69,20 +98,37 @@ export class AppService {
     })
   }
 
-  addBooking(  ) {
-    return this.http.post(this.url + '/bookings/', '');
+  addBooking() {
+    return this.http.post(this.url + '/bookings/', this.bookingFormData);
   }
 
   deleteBooking( id: string ) {
-    return this.http.delete(this.url + '/bookings/' + id);
+    return this.http.delete(this.url + '/bookings/' + id)
+      .subscribe({
+        next: data => {
+          this.toastr.success('Booking Deleted');
+          this.refreshBookingList();
+        },
+        error: error => {
+          this.toastr.success('Error');
+        }
+      });
   }
 
-  convertDate(date: any) {
+  clearForm(form: NgForm) {
+    form.reset();
+  }
+
+  convertDate( date: any ) {
     return moment(date).format('L');
   }
 
-  lookupUser(guid: string) {
-    return guid;
+  lookupUser( id: string ) {
+    return 'testuser';
+  }
+
+  lookupParc( id: string ) {
+    return 'testparc';
   }
 
 }

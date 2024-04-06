@@ -18,5 +18,4 @@ export class BookingsListComponent implements OnInit {
   ngOnInit(): void {
     this.appService.refreshBookingList();
   }
-
 }

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ParcsAddEditComponent } from './parcs-add-edit.component';
+import { ParcsAddComponent } from './parcs-add.component';
 
-describe('ParcsAddEditComponent', () => {
-  let component: ParcsAddEditComponent;
-  let fixture: ComponentFixture<ParcsAddEditComponent>;
+describe('ParcsAddComponent', () => {
+  let component: ParcsAddComponent;
+  let fixture: ComponentFixture<ParcsAddComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ParcsAddEditComponent]
+      imports: [ParcsAddComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(ParcsAddEditComponent);
+    fixture = TestBed.createComponent(ParcsAddComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

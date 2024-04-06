@@ -4,7 +4,7 @@
         <tr>
           <th>Name</th>
           <th>Email</th>
-          <th>Action</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -12,10 +12,9 @@
           <td>{{ user.name }}</td>
           <td>{{ user.email }}</td>
           <td class="text-center">
-            <div class="btn-group" role="group">
-              <button class="btn btn-danger btn-sm me-2">Delete</button>
-              <button class="btn btn-warning btn-sm">Edit</button>
-            </div>
+            <button class="btn btn-danger btn-sm me-2" (click)="appService.deleteUser(user.id)">
+              <img src="/assets/delete.svg" />
+            </button>
           </td>
         </tr>
       </tbody>
