@@ -9,6 +9,11 @@ Split name into firstname and lastname. Include title field.
 Include Guid in the Parcs table seeding. or even further, have a stored proc to include the user name and parc name in the booking call.
 
 
+Running the app:
+
+I trashed the data in booking and parc, due to the parc seeding data using ids not guids, plus the bookings table containing nonsenical data.
+
+
 Part 2
 
 As a front-end dev who also likes to dabble in UX, I keep up to date on both fields - with front-end dev I use both Angular and React, mainly in the mobile field but also SPAs. I do feel that the front-end dev field does like to shift to a new framework a bit too readily.

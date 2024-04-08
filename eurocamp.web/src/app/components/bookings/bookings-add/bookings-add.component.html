@@ -1,1 +1,45 @@
-<p>bookings-add-edit works!</p>
+<form #form="ngForm" autocomplete="off">
+  
+    <input type="hidden" name="bookingId" [value]="appService.bookingFormData.id" 
+    />
+    <div class="mb-3">
+      <label for="user">User Name</label>
+      <select id="user" name="user" [(ngModel)]="appService.bookingFormData.user" required>
+        <option *ngFor="let user of appService.userList" [value]="user.id">
+            {{user.name}}
+          </option>   
+    </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="parc">Parc Name</label>
+        <select id="parc" name="parc" [(ngModel)]="appService.bookingFormData.parc" required>
+          <option class="dropdown-item" *ngFor="let parc of appService.parcList" [value]="parc.id">
+              {{parc.name}}
+          </option>
+      </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="bookingdate">Date</label>
+        <input class="form-control form-control-lg" placeholder="Date" #bookingdate="ngModel" type="date" name="bookingdate" [(ngModel)]="appService.bookingFormData.bookingdate" id="bookingdate" required />
+      </div>
+  
+    <div class="mb-3">
+      <label for="comments">Comments</label>
+      <input class="form-control form-control-lg" placeholder="Comments" #comments="ngModel" type="text" name="comments" [(ngModel)]="appService.bookingFormData.comments" id="comments" required />
+    </div>
+  
+    <div class="row">
+      <div class="col-6">
+        <button class="btn btn-lg btn-success" type="submit" (click)="appService.addBooking(form)">
+          Submit
+        </button>
+      </div>
+      <div class="col-6">
+        <button class="btn btn-lg btn-warning float-end" type="submit" (click)="appService.clearForm(form)">
+          Clear
+        </button>
+      </div>
+    </div>
+  </form>

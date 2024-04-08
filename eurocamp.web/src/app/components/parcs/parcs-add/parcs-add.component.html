@@ -1,1 +1,28 @@
-<p>parcs-add-edit works!</p>
+<form #form="ngForm" autocomplete="off">
+  
+    <input type="hidden" name="parcId" [value]="appService.parcFormData.id" 
+    />
+    <div class="mb-3">
+      <label for="name">Parc Name</label>
+      <input class="form-control form-control-lg" placeholder="Name" #name="ngModel" type="text" name="name" [(ngModel)]="appService.parcFormData.name" id="name" required />
+    </div>
+  
+    <div class="mb-3">
+      <label for="description">Description</label>
+      <input class="form-control form-control-lg" placeholder="Description" #description="ngModel" type="text" name="description" [(ngModel)]="appService.parcFormData.description" id="description" required />
+    </div>
+  
+  
+    <div class="row">
+      <div class="col-6">
+        <button class="btn btn-lg btn-success" type="submit" (click)="appService.addParc(form)">
+          Submit
+        </button>
+      </div>
+      <div class="col-6">
+        <button class="btn btn-lg btn-warning float-end" type="submit" (click)="appService.clearForm(form)">
+          Clear
+        </button>
+      </div>
+    </div>
+  </form>

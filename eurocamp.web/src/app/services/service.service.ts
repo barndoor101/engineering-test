@@ -39,6 +39,7 @@ export class AppService {
         next: data => {
           this.toastr.success('User Added');
           this.refreshUserList();
+          this.clearForm(form);
         },
         error: error => {
           this.toastr.success('Error');
@@ -70,8 +71,18 @@ export class AppService {
     })
   }
 
-  addParc() {
-    return this.http.post(this.url + '/parcs/', this.parcFormData);
+  addParc( form: NgForm ) {
+    return this.http.post(this.url + '/parcs/', form.form.value)
+      .subscribe({
+        next: data => {
+          this.toastr.success('Parc Added');
+          this.refreshParcList();
+          this.clearForm(form);
+        },
+        error: error => {
+          this.toastr.success('Error');
+        }
+      });
   }
 
   deleteParc( id: string ) {
@@ -98,8 +109,18 @@ export class AppService {
     })
   }
 
-  addBooking() {
-    return this.http.post(this.url + '/bookings/', this.bookingFormData);
+  addBooking( form: NgForm ) {
+    return this.http.post(this.url + '/bookings/', form.form.value)
+    .subscribe({
+      next: data => {
+        this.toastr.success('Booking Added');
+        this.refreshBookingList();
+        this.clearForm(form);
+      },
+      error: error => {
+        this.toastr.success('Error');
+      }
+    });
   }
 
   deleteBooking( id: string ) {
@@ -124,11 +145,21 @@ export class AppService {
   }
 
   lookupUser( id: string ) {
-    return 'testuser';
+    let user = this.userList.find(user => user.id === id);
+    if (user ===  undefined){
+      return 'User not found';
+    } else {
+      return user.name;
+    }
   }
 
   lookupParc( id: string ) {
-    return 'testparc';
+    let parc = this.parcList.find(parc => parc.id === id);
+    if (parc ===  undefined){
+      return 'Parc not found';
+    } else {
+      return parc.name;
+    }
   }
 
 }
