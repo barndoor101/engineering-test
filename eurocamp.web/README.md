@@ -8,6 +8,8 @@ Split name into firstname and lastname. Include title field.
 
 Include Guid in the Parcs table seeding. or even further, have a stored proc to include the user name and parc name in the booking call.
 
+Also I found it curious that the U in CRUD is missing, so we'd need to add in a PUT request to th api to edit records.
+
 
 Running the app:
 
