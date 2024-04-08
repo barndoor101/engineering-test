@@ -24,11 +24,11 @@ export class AppService {
 
   refreshUserList() {
     return this.http.get(this.url + '/users').subscribe({
-      next: (res) => {
-        this.userList = Object.values(res)[0] as Users[];
+      next: data => {
+        this.userList = Object.values(data)[0] as Users[];
       },
-      error: (err) => {
-        console.log(err);
+      error: error => {
+        this.toastr.error('Error');
       },
     })
   }
@@ -42,7 +42,7 @@ export class AppService {
           this.clearForm(form);
         },
         error: error => {
-          this.toastr.success('Error');
+          this.toastr.error('Error');
         }
       });
   }
@@ -55,18 +55,19 @@ export class AppService {
           this.refreshUserList();
         },
         error: error => {
-          this.toastr.success('Error');
+          this.toastr.error('Error');
         }
       });
   }
 
   refreshParcList() {
-    return this.http.get(this.url + '/parcs').subscribe({
-      next: (res) => {
-        this.parcList = Object.values(res)[0] as Parcs[];
+    return this.http.get(this.url + '/parcs')
+    .subscribe({
+      next: data => {
+        this.parcList = Object.values(data)[0] as Parcs[];
       },
-      error: (err) => {
-        console.log(err);
+      error: error => {
+        this.toastr.error('Error');
       },
     })
   }
@@ -80,7 +81,7 @@ export class AppService {
           this.clearForm(form);
         },
         error: error => {
-          this.toastr.success('Error');
+          this.toastr.error('Error');
         }
       });
   }
@@ -93,18 +94,19 @@ export class AppService {
           this.refreshParcList();
         },
         error: error => {
-            this.toastr.success('Error');
+          this.toastr.error('Error');
         }
       });
   }
 
   refreshBookingList() {
-    return this.http.get(this.url + '/bookings').subscribe({
-      next: (res) => {
-        this.bookingList = Object.values(res)[0] as Bookings[];
+    return this.http.get(this.url + '/bookings')
+    .subscribe({
+      next: data => {
+        this.bookingList = Object.values(data)[0] as Bookings[];
       },
-      error: (err) => {
-        console.log(err);
+      error: error => {
+        this.toastr.error('Error');
       },
     })
   }
@@ -118,7 +120,7 @@ export class AppService {
         this.clearForm(form);
       },
       error: error => {
-        this.toastr.success('Error');
+        this.toastr.error('Error');
       }
     });
   }
@@ -131,7 +133,7 @@ export class AppService {
           this.refreshBookingList();
         },
         error: error => {
-          this.toastr.success('Error');
+          this.toastr.error('Error');
         }
       });
   }
